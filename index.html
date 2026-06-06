@@ -6,10 +6,10 @@
     <title>Память времён</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header class="hero">
-
     <div class="hero-inner">
 
         <img src="images/logo.png" class="logo" alt="logo">
@@ -18,7 +18,7 @@
 
         <p class="subtitle">
             Информационная система школьного музея<br>
-            WPF клиент + ASP.NET Web API
+            WPF клиент + ASP.NET Backend + SQL Server
         </p>
 
         <div class="buttons">
@@ -32,7 +32,6 @@
         </div>
 
     </div>
-
 </header>
 
 <section class="section">
@@ -47,10 +46,29 @@
     <h2>Возможности</h2>
 
     <div class="cards">
-        <div class="card">Просмотр экспонатов</div>
-        <div class="card">Поиск</div>
-        <div class="card">Администрирование</div>
-        <div class="card">Авторизация</div>
+        <div class="card">
+            <div class="icon">🖼️</div>
+            <h3>Просмотр экспонатов</h3>
+            <p>Каталог цифровой коллекции музея</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔎</div>
+            <h3>Поиск</h3>
+            <p>Быстрый поиск по базе экспонатов</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🛠️</div>
+            <h3>Администрирование</h3>
+            <p>Управление контентом и данными</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔐</div>
+            <h3>Авторизация</h3>
+            <p>Безопасный доступ пользователей</p>
+        </div>
     </div>
 </section>
 
@@ -58,11 +76,26 @@
     <h2>Архитектура</h2>
 
     <div class="arch">
-        <div class="arch-item">WPF Client</div>
+
+        <div class="node">
+            <img src="images/wpf.png" alt="">
+            <span>WPF Client</span>
+        </div>
+
         <div class="arrow">→</div>
-        <div class="arch-item">ASP.NET API</div>
+
+        <div class="node">
+            <img src="images/backend.png" alt="">
+            <span>Backend API</span>
+        </div>
+
         <div class="arrow">→</div>
-        <div class="arch-item">SQL Server</div>
+
+        <div class="node">
+            <img src="images/sql.png" alt="">
+            <span>SQL Server</span>
+        </div>
+
     </div>
 </section>
 
@@ -72,7 +105,6 @@
     <div class="gallery">
         <img src="images/auth.png" onclick="openModal(this)">
         <img src="images/exhibit.png" onclick="openModal(this)">
-        <img src="images/main.png" onclick="openModal(this)">
     </div>
 </section>
 
@@ -80,11 +112,10 @@
     <h2>Технологии</h2>
 
     <div class="tags">
-        <span>C#</span>
-        <span>WPF</span>
-        <span>ASP.NET</span>
-        <span>SQL Server</span>
-        <span>REST API</span>
+        <div class="tag"><img src="images/csharp.png"><span>C#</span></div>
+        <div class="tag"><img src="images/wpf.png"><span>WPF</span></div>
+        <div class="tag"><img src="images/aspnet.png"><span>ASP.NET</span></div>
+        <div class="tag"><img src="images/sql.png"><span>SQL Server</span></div>
     </div>
 </section>
 
@@ -92,6 +123,7 @@
     © 2026 Память времён
 </footer>
 
+<!-- MODAL -->
 <div id="imgModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <img id="modalImg" class="modal-img">
