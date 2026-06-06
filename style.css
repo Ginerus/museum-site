@@ -1,23 +1,31 @@
 body {
     margin: 0;
-    font-family: Segoe UI, Arial, sans-serif;
-    background: #f4f6f8;
-    color: #222;
+    font-family: "Segoe UI", sans-serif;
+    background: #f6f7fb;
+    color: #1f1f1f;
 }
 
+/* HERO как у современного лендинга */
 .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 80px 20px;
-    background: white;
+    background: linear-gradient(180deg, #ffffff, #f2f4f8);
+}
+
+.hero-inner {
+    max-width: 700px;
 }
 
 .logo {
-    width: 110px;
+    width: 90px;
     margin-bottom: 20px;
 }
 
 h1 {
-    font-size: 42px;
+    font-size: 54px;
     margin: 10px 0;
 }
 
@@ -26,6 +34,7 @@ h1 {
     font-size: 18px;
 }
 
+/* кнопки */
 .buttons {
     margin-top: 25px;
 }
@@ -34,69 +43,75 @@ h1 {
     display: inline-block;
     padding: 12px 18px;
     margin: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.primary {
     background: #2d6cdf;
     color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: 0.2s;
 }
 
-.btn:hover {
-    background: #1f56c0;
+.primary:hover {
+    background: #1f55c0;
 }
 
-.secondary {
-    background: #444;
+.ghost {
+    border: 1px solid #ccc;
+    color: #333;
+    background: white;
 }
 
+/* секции */
 .section {
     max-width: 1000px;
     margin: auto;
-    padding: 60px 20px;
+    padding: 80px 20px;
+    text-align: center;
 }
 
 h2 {
-    text-align: center;
+    font-size: 32px;
     margin-bottom: 30px;
 }
 
-.grid {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
+/* карточки */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
 }
 
 .card {
     background: white;
     padding: 20px;
-    border-radius: 12px;
-    width: 280px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
 }
 
-.architecture {
+/* архитектура */
+.arch {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
-.arch-card {
+.arch-item {
     background: white;
-    padding: 20px;
+    padding: 15px 20px;
     border-radius: 12px;
-    width: 220px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
 }
 
 .arrow {
-    font-size: 30px;
+    font-size: 22px;
     color: #2d6cdf;
 }
 
+/* галерея */
 .gallery {
     display: flex;
     gap: 15px;
@@ -106,101 +121,58 @@ h2 {
 
 .gallery img {
     width: 320px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
+.gallery img:hover {
+    transform: scale(1.03);
+}
+
+/* теги */
 .tags {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
 }
 
 .tags span {
     background: white;
     padding: 10px 14px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 10px;
 }
 
+/* footer */
 footer {
     text-align: center;
-    padding: 30px;
-    background: white;
-    margin-top: 40px;
+    padding: 40px;
+    color: #777;
 }
 
-/* ===== ПЛАВНОЕ ПОЯВЛЕНИЕ СЕКЦИЙ ===== */
-.section {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 0.8s ease forwards;
-}
-
-.section:nth-child(2) { animation-delay: 0.1s; }
-.section:nth-child(3) { animation-delay: 0.2s; }
-.section:nth-child(4) { animation-delay: 0.3s; }
-.section:nth-child(5) { animation-delay: 0.4s; }
-
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ===== КАРТИНКИ ===== */
-.gallery img {
-    width: 320px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-}
-
-/* ===== МОДАЛЬНОЕ ОКНО ===== */
+/* modal */
 .modal {
     display: none;
     position: fixed;
-    z-index: 999;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.85);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
 }
 
-.modal-content {
-    display: block;
-    margin: auto;
-    max-width: 80%;
-    max-height: 80%;
+.modal-img {
+    max-width: 85%;
+    max-height: 85%;
     border-radius: 10px;
-    animation: zoomIn 0.2s ease;
-}
-
-@keyframes zoomIn {
-    from {
-        transform: scale(0.7);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
 }
 
 .close {
     position: absolute;
     top: 20px;
-    right: 40px;
-    color: white;
+    right: 30px;
     font-size: 40px;
+    color: white;
     cursor: pointer;
 }
