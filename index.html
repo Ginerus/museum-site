@@ -1,120 +1,117 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Виртуальный музей</title>
+    <title>Память времён — школьный музей</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="hero">
-    <img src="images/logo.png" alt="Логотип музея" class="logo">
+    <img src="images/logo.png" class="logo" alt="Логотип">
 
+    <h1>Память времён</h1>
 
-<h1>Виртуальный музей</h1>
+    <p class="subtitle">
+        Информационная система школьного музея<br>
+        WPF клиент + ASP.NET Web API
+    </p>
 
-<p>
-    Клиент-серверное приложение для просмотра и управления
-    музейными экспонатами.
-</p>
+    <div class="buttons">
+        <a class="btn" href="https://github.com/USERNAME/museum-system/releases/latest">
+            Скачать приложение
+        </a>
 
-<div class="buttons">
-    <a href="https://github.com/USERNAME/museum-system/releases/latest"
-       class="btn">
-        Скачать последнюю версию
-    </a>
-
-    <a href="https://github.com/USERNAME/museum-system"
-       class="btn btn-secondary">
-        Исходный код
-    </a>
-</div>
-
-
+        <a class="btn secondary" href="https://github.com/USERNAME/museum-system">
+            Исходный код
+        </a>
+    </div>
 </header>
 
-<section>
+<section class="section">
     <h2>О проекте</h2>
-
-
-<p>
-    Проект разработан в рамках дипломной работы по специальности
-    «Информационные системы и программирование».
-</p>
-
-<p>
-    Приложение построено по клиент-серверной архитектуре:
-    WPF-клиент взаимодействует с ASP.NET Web API,
-    а данные хранятся в SQL Server.
-</p>
-
-
+    <p>
+        «Память времён» — это клиент-серверная информационная система школьного музея.
+        Проект разработан в рамках дипломной работы и предназначен для хранения,
+        управления и просмотра музейных экспонатов.
+    </p>
 </section>
 
-<section>
-    <h2>Возможности</h2>
+<section class="section">
+    <h2>Роли пользователей</h2>
 
+    <div class="grid">
+        <div class="card">
+            <h3>Гость</h3>
+            <ul>
+                <li>Просмотр экспонатов</li>
+                <li>Поиск информации</li>
+                <li>Просмотр описаний</li>
+            </ul>
+        </div>
 
-<ul>
-    <li>Просмотр экспонатов</li>
-    <li>Поиск по экспонатам</li>
-    <li>Просмотр подробной информации</li>
-    <li>Авторизация администратора</li>
-    <li>Добавление и редактирование данных</li>
-    <li>Работа через Web API</li>
-</ul>
-
-
+        <div class="card">
+            <h3>Администратор</h3>
+            <ul>
+                <li>Добавление экспонатов</li>
+                <li>Редактирование данных</li>
+                <li>Удаление записей</li>
+                <li>Авторизация</li>
+            </ul>
+        </div>
+    </div>
 </section>
 
-<section>
-    <h2>Архитектура</h2>
+<section class="section">
+    <h2>Архитектура системы</h2>
 
-<pre>
-WPF Client
-     │
-     ▼
-ASP.NET Web API
-     │
-     ▼
- SQL Server
-</pre>
+    <div class="architecture">
+        <div class="arch-card">
+            <h3>WPF Client</h3>
+            <p>Интерфейс пользователя</p>
+        </div>
 
+        <div class="arrow">→</div>
+
+        <div class="arch-card">
+            <h3>ASP.NET Web API</h3>
+            <p>Серверная логика</p>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="arch-card">
+            <h3>SQL Server</h3>
+            <p>Хранение данных</p>
+        </div>
+    </div>
 </section>
 
-<section>
-    <h2>Технологии</h2>
-
-
-<div class="tech">
-    <span>C#</span>
-    <span>WPF</span>
-    <span>ASP.NET Web API</span>
-    <span>SQL Server</span>
-    <span>Git</span>
-    <span>GitHub</span>
-</div>
-
-
-</section>
-
-<section>
+<section class="section">
     <h2>Скриншоты</h2>
 
+    <div class="gallery">
+        <img src="images/auth.png" alt="Авторизация">
+        <img src="images/exhibit.png" alt="Экспонаты">
+    </div>
+</section>
 
-<div class="screenshots">
-    <img src="images/auth.png" alt="Авторизация">
-    <img src="images/main.png" alt="Главное окно">
-    <img src="images/exhibit.png" alt="Экспонат">
-</div>
+<section class="section">
+    <h2>Технологии</h2>
 
-
+    <div class="tags">
+        <span>C#</span>
+        <span>WPF</span>
+        <span>ASP.NET Web API</span>
+        <span>SQL Server</span>
+        <span>Git</span>
+        <span>REST API</span>
+    </div>
 </section>
 
 <footer>
-    <p>Герман • Дипломный проект • 2026</p>
+    <p>© 2026 — Память времён | Дипломный проект</p>
 </footer>
 
 </body>
