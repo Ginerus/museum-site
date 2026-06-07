@@ -137,7 +137,7 @@ h1 {
 }
 
 .gallery img {
-    width: 320px;
+    width: auto;
     height: 180px;
     object-fit: cover;
     border-radius: 12px;
