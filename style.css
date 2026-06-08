@@ -10,7 +10,7 @@ body {
     color: #e5e7eb;
 }
 
-/* HERO */
+/* HERO - с анимированным градиентом (основные стили, градиент и анимация добавлены через inline style в index.html) */
 .hero {
     padding: 80px 20px;
     text-align: center;
@@ -22,7 +22,7 @@ body {
 }
 
 .logo {
-    width: 90px;
+    width: 200px;
     margin-bottom: 20px;
 }
 
