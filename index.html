@@ -5,103 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Память времён</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Дополнительные стили только для анимированного градиента в hero */
-        .hero {
-            background: linear-gradient(135deg, #4A90E2, #ffffff, #4A90E2, #e6f0ff, #4A90E2);
-            background-size: 300% 300%;
-            animation: gradientShift 6s ease infinite;
-            position: relative;
-            
-            /* НОВОЕ: hero на весь экран */
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-        
-        /* Лёгкое затемнение для читаемости белого текста на светлом градиенте */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.2);
-            z-index: 0;
-        }
-        
-        .hero-inner {
-            position: relative;
-            z-index: 1;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Немного улучшаем читаемость заголовка на светлом фоне */
-        .hero h1 {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .hero .subtitle {
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            background: rgba(0, 0, 0, 0.3);
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-        
-        /* Кнопки */
-        .hero .btn {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Добавляем стиль для третьей кнопки (сервер) */
-        .btn.server {
-            background: #10b981;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-        
-        .btn.server:hover {
-            background: #059669;
-            transform: translateY(-2px);
-        }
-        
-        /* Немного увеличим отступы для первой секции после fullscreen hero */
-        .section:first-of-type {
-            margin-top: 50px;
-        }
-        
-        /* Адаптив для мобильных */
-        @media (max-width: 768px) {
-            .hero {
-                min-height: 100vh;
-                padding: 20px;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-                text-align: center;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -227,7 +132,9 @@
 <!-- MODAL -->
 <div id="imgModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
+    <button class="modal-prev" onclick="prevImage()">&#10094;</button>
     <img id="modalImg" class="modal-img">
+    <button class="modal-next" onclick="nextImage()">&#10095;</button>
 </div>
 
 <script src="script.js"></script>
