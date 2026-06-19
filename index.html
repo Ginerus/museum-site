@@ -6,7 +6,6 @@
     <title>Память времён</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
 
@@ -110,12 +109,19 @@
 <section class="section">
     <h2>Скриншоты</h2>
 
-    <div class="gallery">
+    <div class="gallery" id="galleryContainer">
         <img src="images/auth.png" onclick="openModal(this)">
         <img src="images/about.png" onclick="openModal(this)">
         <img src="images/articles.png" onclick="openModal(this)">
         <img src="images/exhibits.png" onclick="openModal(this)">
         <img src="images/articles_pdf.png" onclick="openModal(this)">
+        <!-- и так далее... -->
+    </div>
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <button id="toggleGalleryBtn" class="btn primary" style="display: inline-block; cursor: pointer; border: none;">
+            Показать все (<span id="hiddenCount"></span>)
+        </button>
     </div>
 </section>
 
