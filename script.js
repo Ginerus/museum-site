@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const images = gallery.querySelectorAll('img');
     const total = images.length;
-    const visibleCount = 3ч; // Сколько показывать изначально
+    const visibleCount = 3; // Сколько показывать изначально
     
     // Если изображений больше, чем visibleCount
     if (total > visibleCount) {
