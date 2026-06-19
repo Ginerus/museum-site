@@ -1,5 +1,7 @@
 let currentImages = [];
 let currentIndex = 0;
+let touchStartX = 0;
+let touchEndX = 0;
 
 function openModal(img) {
     const modal = document.getElementById("imgModal");
@@ -64,6 +66,63 @@ document.addEventListener('keydown', function(e) {
         nextImage();
     } else if (e.key === 'Escape') {
         closeModal();
+    }
+});
+
+// ===================== СВАЙПЫ ДЛЯ МОБИЛЬНЫХ =====================
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+    
+    // Обработчик начала касания
+    modal.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    // Обработчик окончания касания
+    modal.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+    
+    // Обработчик движения (для отмены свайпа, если пользователь передумал)
+    modal.addEventListener('touchmove', function(e) {
+        // Если свайп слишком короткий - игнорируем
+        const touch = e.changedTouches[0];
+        const deltaX = touch.screenX - touchStartX;
+        if (Math.abs(deltaX) > 50) {
+            // Показываем визуальную обратную связь - легкое смещение изображения
+            const offset = deltaX * 0.3;
+            modalImg.style.transform = `translateX(${offset}px)`;
+            modalImg.style.transition = 'none';
+        }
+    }, { passive: true });
+    
+    // Обработчик отмены касания (если палец убрали с экрана)
+    modal.addEventListener('touchcancel', function() {
+        // Возвращаем изображение на место
+        modalImg.style.transform = 'translateX(0)';
+        modalImg.style.transition = 'transform 0.3s ease';
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const deltaX = touchEndX - touchStartX;
+        const minSwipeDistance = 50; // Минимальное расстояние для свайпа
+        
+        // Возвращаем изображение на место с анимацией
+        modalImg.style.transform = 'translateX(0)';
+        modalImg.style.transition = 'transform 0.3s ease';
+        
+        // Определяем направление свайпа
+        if (Math.abs(deltaX) > minSwipeDistance) {
+            if (deltaX < 0) {
+                // Свайп влево - следующее изображение
+                nextImage();
+            } else if (deltaX > 0) {
+                // Свайп вправо - предыдущее изображение
+                prevImage();
+            }
+        }
     }
 });
 
