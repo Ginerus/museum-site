@@ -5,7 +5,7 @@ function openModal(img) {
     const modal = document.getElementById("imgModal");
     const modalImg = document.getElementById("modalImg");
 
-    // Собираем все скриншоты из галереи
+    // Собираем все скриншоты из галереи (включая скрытые)
     const gallery = document.querySelector('.gallery');
     if (gallery) {
         currentImages = Array.from(gallery.querySelectorAll('img'));
@@ -64,5 +64,55 @@ document.addEventListener('keydown', function(e) {
         nextImage();
     } else if (e.key === 'Escape') {
         closeModal();
+    }
+});
+
+// ===================== УПРАВЛЕНИЕ ГАЛЕРЕЕЙ =====================
+document.addEventListener('DOMContentLoaded', function() {
+    const gallery = document.querySelector('.gallery');
+    if (!gallery) return;
+    
+    const images = gallery.querySelectorAll('img');
+    const total = images.length;
+    const visibleCount = 3ч; // Сколько показывать изначально
+    
+    // Если изображений больше, чем visibleCount
+    if (total > visibleCount) {
+        // Скрываем все, начиная с visibleCount
+        images.forEach((img, index) => {
+            if (index >= visibleCount) {
+                img.classList.add('hidden-gallery-item');
+            }
+        });
+        
+        // Настраиваем кнопку
+        const btn = document.getElementById('toggleGalleryBtn');
+        const hiddenCount = document.getElementById('hiddenCount');
+        const hiddenTotal = total - visibleCount;
+        hiddenCount.textContent = hiddenTotal;
+        
+        let isExpanded = false;
+        
+        btn.addEventListener('click', function() {
+            isExpanded = !isExpanded;
+            
+            images.forEach((img, index) => {
+                if (index >= visibleCount) {
+                    if (isExpanded) {
+                        img.classList.remove('hidden-gallery-item');
+                    } else {
+                        img.classList.add('hidden-gallery-item');
+                    }
+                }
+            });
+            
+            btn.innerHTML = isExpanded 
+                ? `Скрыть` 
+                : `Показать все (<span id="hiddenCount">${hiddenTotal}</span>)`;
+        });
+    } else {
+        // Если изображений мало — скрываем кнопку
+        const btn = document.getElementById('toggleGalleryBtn');
+        if (btn) btn.style.display = 'none';
     }
 });
