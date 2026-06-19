@@ -10,30 +10,65 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-/* HERO - с анимированным градиентом (основные стили, градиент и анимация добавлены через inline style в index.html) */
+/* HERO - с анимированным градиентом */
 .hero {
-    padding: 80px 20px;
-    text-align: center;
+    background: linear-gradient(135deg, #4A90E2, #ffffff, #4A90E2, #e6f0ff, #4A90E2);
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Лёгкое затемнение для читаемости белого текста на светлом градиенте */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 0;
 }
 
 .hero-inner {
+    position: relative;
+    z-index: 1;
     max-width: 900px;
     margin: auto;
+    text-align: center;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Немного улучшаем читаемость заголовка на светлом фоне */
+.hero h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero .subtitle {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    opacity: 0.8;
+    margin-bottom: 25px;
 }
 
 .logo {
     width: 200px;
     margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    opacity: 0.8;
-    margin-bottom: 25px;
 }
 
 /* BUTTONS */
@@ -49,6 +84,7 @@ h1 {
     text-decoration: none;
     color: white;
     transition: 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .primary {
@@ -63,6 +99,16 @@ h1 {
     border: 1px solid rgba(255,255,255,0.3);
 }
 
+.btn.server {
+    background: #10b981;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn.server:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
 /* SECTIONS */
 .section {
     max-width: 1000px;
@@ -71,6 +117,10 @@ h1 {
     background: rgba(255,255,255,0.05);
     border-radius: 16px;
     backdrop-filter: blur(10px);
+}
+
+.section:first-of-type {
+    margin-top: 50px;
 }
 
 .section h2 {
@@ -134,6 +184,7 @@ h1 {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .gallery img {
@@ -147,6 +198,30 @@ h1 {
 
 .gallery img:hover {
     transform: scale(1.03);
+}
+
+/* Скрытые элементы галереи */
+.gallery img.hidden-gallery-item {
+    display: none;
+}
+
+/* Кнопка "Показать все" */
+#toggleGalleryBtn {
+    background: #3b82f6;
+    padding: 10px 24px;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.2s;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+}
+
+#toggleGalleryBtn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
 }
 
 /* TAGS */
@@ -186,6 +261,7 @@ footer {
     background: rgba(0,0,0,0.85);
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
 .modal-img {
@@ -200,163 +276,8 @@ footer {
     right: 30px;
     font-size: 30px;
     cursor: pointer;
-}
-
-.hero {
-    background: linear-gradient(135deg, #4A90E2, #ffffff, #4A90E2, #e6f0ff, #4A90E2);
-    background-size: 300% 300%;
-    animation: gradientShift 6s ease infinite;
-    position: relative;
-    
-    /* НОВОЕ: hero на весь экран */
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-}
-
-/* Лёгкое затемнение для читаемости белого текста на светлом градиенте */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 0;
-}
-
-.hero-inner {
-    position: relative;
-    z-index: 1;
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Немного улучшаем читаемость заголовка на светлом фоне */
-.hero h1 {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.hero .subtitle {
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    background: rgba(0, 0, 0, 0.3);
-    display: inline-block;
-    padding: 5px 15px;
-    border-radius: 20px;
-}
-
-/* Кнопки */
-.hero .btn {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Добавляем стиль для третьей кнопки (сервер) */
-.btn.server {
-    background: #10b981;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.btn.server:hover {
-    background: #059669;
-    transform: translateY(-2px);
-}
-
-/* Немного увеличим отступы для первой секции после fullscreen hero */
-.section:first-of-type {
-    margin-top: 50px;
-}
-
-/* Адаптив для мобильных */
-@media (max-width: 768px) {
-    .hero {
-        min-height: 100vh;
-        padding: 20px;
-    }
-    
-    .hero h1 {
-        font-size: 32px;
-    }
-    
-    .buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-    
-    .btn {
-        width: 100%;
-        max-width: 250px;
-        text-align: center;
-    }
-}
-
-/* Мобильная адаптация галереи и модального окна */
-@media (max-width: 768px) {
-    /* Кнопки навигации — побольше и удобнее для пальцев */
-    .modal-prev,
-    .modal-next {
-        font-size: 32px;
-        padding: 12px 16px;
-        background: rgba(0,0,0,0.6);
-        /* Увеличиваем область нажатия */
-        min-width: 50px;
-        min-height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    /* Отступы от краёв побольше, чтобы не нажимать мимо */
-    .modal-prev {
-        left: 8px;
-    }
-    
-    .modal-next {
-        right: 8px;
-    }
-    
-    /* Крестик закрытия тоже увеличим */
-    .close {
-        font-size: 40px;
-        top: 15px;
-        right: 20px;
-        padding: 5px 10px;
-    }
-    
-    /* Изображение в модалке — на весь экран с отступами */
-    .modal-img {
-        max-width: 95%;
-        max-height: 85%;
-    }
-    
-    /* Галерея скриншотов — вертикальная прокрутка удобнее */
-    .gallery {
-        gap: 12px;
-        justify-content: center;
-    }
-    
-    .gallery img {
-        height: 150px;
-        width: auto;
-    }
-
-        .modal-prev,
-    .modal-next {
-        /* Делаем полупрозрачными, чтобы не загораживали картинку */
-        opacity: 0.7;
-    }
-    
-    .modal-prev:hover,
-    .modal-next:hover {
-        opacity: 1;
-    }
+    color: white;
+    z-index: 1001;
 }
 
 /* Кнопки навигации в модальном окне */
@@ -393,10 +314,74 @@ footer {
 
 /* Адаптив для мобильных */
 @media (max-width: 768px) {
+    .hero {
+        min-height: 100vh;
+        padding: 20px;
+    }
+    
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+    }
+
+    /* Мобильная адаптация галереи */
+    .gallery {
+        gap: 12px;
+        justify-content: center;
+    }
+    
+    .gallery img {
+        height: 150px;
+        width: auto;
+    }
+
+    /* Мобильная адаптация модального окна */
     .modal-prev,
     .modal-next {
-        font-size: 28px;
-        padding: 8px 12px;
+        font-size: 32px;
+        padding: 12px 16px;
+        background: rgba(0,0,0,0.6);
+        min-width: 50px;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.7;
+    }
+    
+    .modal-prev:hover,
+    .modal-next:hover {
+        opacity: 1;
+    }
+    
+    .modal-prev {
+        left: 8px;
+    }
+    
+    .modal-next {
+        right: 8px;
+    }
+    
+    .close {
+        font-size: 40px;
+        top: 15px;
+        right: 20px;
+        padding: 5px 10px;
+    }
+    
+    .modal-img {
+        max-width: 95%;
+        max-height: 85%;
     }
 }
-
