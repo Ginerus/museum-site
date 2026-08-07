@@ -538,39 +538,59 @@ footer {
     cursor: pointer;
     font-family: inherit;
     font-size: 1rem;
+    border: none;
+    width: 100%;
 }
 
-/* Меню под кнопкой */
+/* Меню — ровно под кнопкой, ширина = ширине кнопки */
 .dropdown-menu {
     position: absolute;
-    top: calc(100% + 6px);
+    top: calc(100% + 10px);
     left: 0;
     right: 0;
     display: none;
     flex-direction: column;
-    padding: 6px;
-    background: rgba(15, 23, 42, 0.98);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 12px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
     z-index: 100;
     overflow: hidden;
 }
 
-/* Показать при наведении */
+/* Стрелочка-указатель на кнопку */
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(16px);
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    z-index: -1;
+}
+
+/* Показать на десктопе при наведении */
 .dropdown:hover .dropdown-menu {
     display: flex;
 }
 
-/* Пункты */
+/* Пункты меню */
 .dropdown-item {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px 14px;
-    border-radius: 8px;
-    color: #e2e8f0 !important;
-    text-decoration: none !important;
+    border-radius: 10px;
+    color: #e2e8f0;
+    text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     white-space: nowrap;
@@ -578,8 +598,8 @@ footer {
 }
 
 .dropdown-item:hover {
-    background: rgba(255,255,255,0.1);
-    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
 }
 
 .os-icon {
@@ -589,8 +609,8 @@ footer {
 
 .dropdown-divider {
     height: 1px;
-    background: rgba(255,255,255,0.08);
-    margin: 2px 6px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 4px 8px;
 }
 
 /* Мобильная адаптация */
@@ -599,19 +619,18 @@ footer {
         width: 100%;
         max-width: 250px;
     }
-    
+
     .dropdown-menu {
-        position: static;
-        margin-top: 8px;
-        display: none;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        left: 0;
+        right: 0;
+        top: calc(100% + 8px);
     }
-    
-    /* На тач-устройствах — только по классу .open */
+
+    /* На тач-устройствах только по классу .open */
     .dropdown:hover .dropdown-menu {
         display: none;
     }
-    
+
     .dropdown.open .dropdown-menu {
         display: flex;
     }
