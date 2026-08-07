@@ -527,3 +527,92 @@ footer {
         transform: rotate(45deg);
     }
 }
+
+/* ===== DROPDOWN ===== */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown .btn.server {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+/* Меню под кнопкой */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    padding: 6px;
+    background: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    z-index: 100;
+    overflow: hidden;
+}
+
+/* Показать при наведении */
+.dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
+/* Пункты */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #e2e8f0 !important;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background 0.15s;
+}
+
+.dropdown-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: #ffffff !important;
+}
+
+.os-icon {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 2px 6px;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .dropdown {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        margin-top: 8px;
+        display: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    /* На тач-устройствах — только по классу .open */
+    .dropdown:hover .dropdown-menu {
+        display: none;
+    }
+    
+    .dropdown.open .dropdown-menu {
+        display: flex;
+    }
+}
