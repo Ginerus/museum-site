@@ -29,11 +29,31 @@
                 ⬇️ Скачать приложение
             </a>
 
-            <a class="btn server" href="https://github.com/Ginerus/MuseumClientServerApp/releases/latest/download/MuseumServer-linux-x64.zip">
-                🖥️ Скачать серверную часть
-            </a>
+            <!-- DROPDOWN: Серверная часть -->
+            <div class="dropdown" id="serverDropdown">
+                <button class="btn server" type="button">
+                    🖥️ Скачать серверную часть
+                </button>
+                <div class="dropdown-menu">
+                    <a href="https://github.com/Ginerus/MuseumClientServerApp/releases/latest/download/MuseumServer-win-x86.zip" class="dropdown-item">
+                        <span class="dropdown-icon">🪟</span>
+                        <div class="dropdown-info">
+                            <strong>Windows</strong>
+                            <span>x86 · .zip</span>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="https://github.com/Ginerus/MuseumClientServerApp/releases/latest/download/MuseumServer-linux-x64.zip" class="dropdown-item">
+                        <span class="dropdown-icon">🐧</span>
+                        <div class="dropdown-info">
+                            <strong>Linux</strong>
+                            <span>x64 · .zip</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
-            <a class="btn ghost" href="https://github.com/GInerus/MuseumClientServerApp">
+            <a class="btn ghost" href="https://github.com/Ginerus/MuseumClientServerApp">
                 📂 Исходный код
             </a>
         </div>
@@ -135,7 +155,6 @@
         <img src="images/screenshots/videos.png" onclick="openModal(this)">
         <img src="images/screenshots/video_view.png" onclick="openModal(this)">
         <img src="images/screenshots/upload_video.png" onclick="openModal(this)">
-        <!-- и так далее... -->
     </div>
     
     <div style="text-align: center; margin-top: 20px;">
