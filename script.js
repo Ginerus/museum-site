@@ -175,3 +175,35 @@ document.addEventListener('DOMContentLoaded', function() {
         if (btn) btn.style.display = 'none';
     }
 });
+
+
+// ===================== DROPDOWN (мобильный тач) =====================
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.getElementById('serverDropdown');
+    if (!dropdown) return;
+
+    const btn = dropdown.querySelector('.btn.server');
+
+    // На мобильных — тап по кнопке переключает меню
+    btn.addEventListener('click', function(e) {
+        // Если ширина экрана мобильная или меню ещё не открыто через hover
+        if (window.innerWidth <= 768 || !dropdown.matches(':hover')) {
+            e.preventDefault();
+            dropdown.classList.toggle('open');
+        }
+    });
+
+    // Закрытие при клике вне дропдауна
+    document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
+        }
+    });
+
+    // Закрытие при выборе пункта
+    dropdown.querySelectorAll('.dropdown-item').forEach(item => {
+        item.addEventListener('click', function() {
+            dropdown.classList.remove('open');
+        });
+    });
+});
