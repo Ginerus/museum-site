@@ -542,10 +542,21 @@ footer {
     width: 100%;
 }
 
+/* Невидимый мостик: сохраняет hover при переходе с кнопки на меню */
+.dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 12px;
+    z-index: 99;
+}
+
 /* Меню = ширина кнопки, ровно под ней */
 .dropdown-menu {
     position: absolute;
-    top: calc(100% + 10px);
+    top: calc(100% + 12px);
     left: 0;
     width: 100%;
     display: none;
@@ -559,12 +570,10 @@ footer {
     overflow: hidden;
 }
 
-/* Показать на десктопе при наведении */
 .dropdown:hover .dropdown-menu {
     display: flex;
 }
 
-/* Пункты */
 .dropdown-item {
     display: flex;
     align-items: center;
@@ -598,6 +607,10 @@ footer {
     .dropdown {
         width: 100%;
         max-width: 250px;
+    }
+
+    .dropdown::after {
+        display: none;
     }
 
     .dropdown:hover .dropdown-menu {
